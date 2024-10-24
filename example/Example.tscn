@@ -1,0 +1,140 @@
+[gd_scene load_steps=5 format=3 uid="uid://ctd24k3x1jd03"]
+
+[ext_resource type="Script" path="res://example/example_integer.gd" id="1_gyaif"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_mvixb"]
+font_size = 24
+
+[sub_resource type="LabelSettings" id="LabelSettings_g33fa"]
+font_size = 12
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_uqyn5"]
+thickness = 24
+
+[node name="Example" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gyaif")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(2.10572e-07, 0.173906, 0.198731, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -270.0
+offset_top = -64.5
+offset_right = 270.0
+offset_bottom = 64.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="VB" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Tittle" type="Label" parent="MarginContainer/VB"]
+layout_mode = 2
+text = "Example"
+label_settings = SubResource("LabelSettings_mvixb")
+horizontal_alignment = 1
+uppercase = true
+
+[node name="Label" type="Label" parent="MarginContainer/VB"]
+layout_mode = 2
+text = "Use the buttons for add or subtract integer value
+(Test with a memory manipulation software)"
+label_settings = SubResource("LabelSettings_g33fa")
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/VB"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 32
+theme_override_styles/separator = SubResource("StyleBoxLine_uqyn5")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VB"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 20
+
+[node name="Unsecure" type="VBoxContainer" parent="MarginContainer/VB/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="MarginContainer/VB/HBoxContainer/Unsecure"]
+layout_mode = 2
+text = "Unsecure Value"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/VB/HBoxContainer/Unsecure"]
+layout_mode = 2
+
+[node name="value" type="Label" parent="MarginContainer/VB/HBoxContainer/Unsecure"]
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VB/HBoxContainer/Unsecure"]
+layout_mode = 2
+
+[node name="minus" type="Button" parent="MarginContainer/VB/HBoxContainer/Unsecure/HBoxContainer"]
+custom_minimum_size = Vector2(128, 32)
+layout_mode = 2
+text = "-"
+
+[node name="add" type="Button" parent="MarginContainer/VB/HBoxContainer/Unsecure/HBoxContainer"]
+custom_minimum_size = Vector2(128, 32)
+layout_mode = 2
+text = "+"
+
+[node name="Secure" type="VBoxContainer" parent="MarginContainer/VB/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="MarginContainer/VB/HBoxContainer/Secure"]
+layout_mode = 2
+text = "Secure Value"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/VB/HBoxContainer/Secure"]
+layout_mode = 2
+
+[node name="value" type="Label" parent="MarginContainer/VB/HBoxContainer/Secure"]
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VB/HBoxContainer/Secure"]
+layout_mode = 2
+
+[node name="minus" type="Button" parent="MarginContainer/VB/HBoxContainer/Secure/HBoxContainer"]
+custom_minimum_size = Vector2(128, 32)
+layout_mode = 2
+text = "-"
+
+[node name="add" type="Button" parent="MarginContainer/VB/HBoxContainer/Secure/HBoxContainer"]
+custom_minimum_size = Vector2(128, 32)
+layout_mode = 2
+text = "+"
+
+[connection signal="pressed" from="MarginContainer/VB/HBoxContainer/Unsecure/HBoxContainer/minus" to="." method="_on_minus_unsecure_pressed"]
+[connection signal="pressed" from="MarginContainer/VB/HBoxContainer/Unsecure/HBoxContainer/add" to="." method="_on_add_unsecure_pressed"]
+[connection signal="pressed" from="MarginContainer/VB/HBoxContainer/Secure/HBoxContainer/minus" to="." method="_on_minus_secure_pressed"]
+[connection signal="pressed" from="MarginContainer/VB/HBoxContainer/Secure/HBoxContainer/add" to="." method="_on_add_secure_pressed"]
