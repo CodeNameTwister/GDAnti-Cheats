@@ -1,4 +1,10 @@
 class_name _OVAL extends Object
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+#	GDAnti-Cheats
+#
+#	https://github.com/CodeNameTwister/GDAnti-Cheats
+#	author:	"Twister"
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 const STRS : String = 'abcdefghijklmnopqrstuvwxyz0123456789_'
 
 static var __INIT_1 : bool = false

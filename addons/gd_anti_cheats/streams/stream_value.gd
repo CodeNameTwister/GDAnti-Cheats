@@ -1,4 +1,10 @@
 class_name StreamValue extends RefCounted
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+#	GDAnti-Cheats
+#
+#	https://github.com/CodeNameTwister/GDAnti-Cheats
+#	author:	"Twister"
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 var flush_rate : int = 30
 var buffer_size : int = 10
 

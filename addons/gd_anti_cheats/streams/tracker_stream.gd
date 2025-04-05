@@ -1,4 +1,10 @@
 class_name TrackerStream extends StreamValue
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+#	GDAnti-Cheats
+#
+#	https://github.com/CodeNameTwister/GDAnti-Cheats
+#	author:	"Twister"
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 # Value uppdated
 signal updated(last_value : Variant, new_value : Variant)

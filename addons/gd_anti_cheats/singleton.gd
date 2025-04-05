@@ -1,6 +1,12 @@
 #GDAntiCheats
 @icon("icon.png")
 extends Node
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+#	GDAnti-Cheats
+#
+#	https://github.com/CodeNameTwister/GDAnti-Cheats
+#	author:	"Twister"
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 signal stream_buffer_change(buffer_size : int, flush_rate : int)
 signal change_node(self_node : Node, new_node : Node)
 

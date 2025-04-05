@@ -1,4 +1,10 @@
 class_name BoolStream extends StreamValue
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+#	GDAnti-Cheats
+#
+#	https://github.com/CodeNameTwister/GDAnti-Cheats
+#	author:	"Twister"
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 var value : bool:
 	set(e):
 		set_stream(e)

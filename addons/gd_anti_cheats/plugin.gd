@@ -1,5 +1,11 @@
 @tool
 extends EditorPlugin
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+#	GDAnti-Cheats
+#
+#	https://github.com/CodeNameTwister/GDAnti-Cheats
+#	author:	"Twister"
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 func _enter_tree() -> void:
 	var cfg : ConfigFile = ConfigFile.new()
