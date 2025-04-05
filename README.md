@@ -91,7 +91,7 @@ func _ready() -> void:
 ```
 
 ## Roadmap [↑](#table-of-contents)
-- TrackerStream
+- ~~TrackerStream~~
 
 I am currently working on personal project and in the future I plan to create an anti-cheat API for online games, if you are interested you can follow me for future updates.
 
