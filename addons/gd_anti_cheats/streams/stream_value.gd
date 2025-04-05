@@ -14,6 +14,10 @@ func globaL_update_settings(buffer : int, flush : int) -> void:
 	buffer_size = buffer
 	_stream_init()
 
+func _on_change_node(last_node : Node, new_node : Node) -> void:
+	last_node.unregister(self)
+	new_node.register(self)
+
 func fill(value : Variant) -> void:
 	for s in _slot:
 		s.set_value(value)
@@ -39,12 +43,9 @@ func set_stream(value: Variant) -> void:
 func _init() -> void:
 	_stream_init()
 	_init_value()
-	var singleton : Node = Engine.get_main_loop().root.get_node_or_null("GDAntiCheats")
-	if singleton:
-		singleton.stream_buffer_change.connect(globaL_update_settings)
-		flush_value = singleton.flush_value
-		flush_rate = singleton.FLUSH_RATE
-		buffer_size = singleton.BUFFER_SIZE
+
+	for node in Engine.get_main_loop().get_nodes_in_group(_OVAL.GDAC_GROUP):
+		node.register(self, true)
 
 func _init_value() -> void:pass
 
@@ -66,6 +67,5 @@ func _notification(what: int) -> void:
 			if is_instance_valid(s):
 				s.free()
 		_slot.clear()
-		var singleton : Node = Engine.get_main_loop().root.get_node_or_null("GDAntiCheats")
-		if singleton:
-			singleton.unregister(self)
+		for node in Engine.get_main_loop().get_nodes_in_group(_OVAL.GDAC_GROUP):
+			node.unregister(self)

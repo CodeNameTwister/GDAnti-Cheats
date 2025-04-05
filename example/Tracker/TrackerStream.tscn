@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://5766rkpapfe0"]
+
+[ext_resource type="Script" uid="uid://cngaw52w5v0jd" path="res://example/Tracker/tracker_stream.gd" id="1_q8gl4"]
+[ext_resource type="Script" uid="uid://cwceuqwiyym5i" path="res://example/Tracker/tracker_stream_int.gd" id="2_6skea"]
+[ext_resource type="Script" uid="uid://x2gtpa26mjdf" path="res://example/Tracker/tracker_stream_string.gd" id="2_a6ym5"]
+
+[node name="Examples" type="Label"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Push The Play Button!"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("1_q8gl4")
+
+[node name="tracker_stream_int" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("2_6skea")
+
+[node name="Control" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("2_a6ym5")
