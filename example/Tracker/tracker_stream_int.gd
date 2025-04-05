@@ -37,7 +37,7 @@ func _ready() -> void:
 	print("After initialize: is integer ", my_grant_value_int.get_type() == TYPE_INT)
 
 	my_grant_value_int.value = "Trying update" # Trigger error by another type by default
-	my_grant_value_int.value = 1.4 # OK
+	my_grant_value_int.value = 1.4 # Trigger error by another type by default
 
 	my_grant_value_int.value = 12 # Append to track
 	my_grant_value_int.value = 15 # Append to track
