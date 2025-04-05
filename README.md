@@ -1,5 +1,5 @@
 <p align="center">
-  <img width="200" height="200" src="addons/gdanti_cheats/icon.png">
+  <img width="200" height="200" src="addons/gd_anti_cheats/icon.png">
 </p>
 
 # GDAnti-Cheats
