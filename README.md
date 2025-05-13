@@ -34,7 +34,7 @@ _Use case image_ [↑](#Example)
 - **VariantStream** _General purposes values_
 
 ## Others
-- **TrackValue** _It is used to monitor the list of changes similar to TrackerStream Scene._
+- **TrackValue** _Can be used to monitor the list of changes similar to TrackerStream Scene._
 
 ### Example
 ```gd
