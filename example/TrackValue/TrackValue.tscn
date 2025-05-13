@@ -1,0 +1,75 @@
+[gd_scene load_steps=2 format=3 uid="uid://b1t515fkakyja"]
+
+[ext_resource type="Script" uid="uid://oo27oe6pfat2" path="res://example/TrackValue/track_value.gd" id="1_0q1y3"]
+
+[node name="TrackValue" type="Control" node_paths=PackedStringArray("_gui_value", "_gui_time", "_gui_time_seconds_update")]
+editor_description = "In this example, an attempt is made to modify the values ​​while they are automatically updating in an attempt to trigger the last modified value signal.
+
+Up: For Show Last Tracked Value
+
+Down: For Show All Track Values"
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0q1y3")
+_gui_value = NodePath("TrackContainer/Container/Values/Value")
+_gui_time = NodePath("TrackContainer/Container/Values/Time")
+_gui_time_seconds_update = NodePath("TrackContainer/Container/HBoxContainer/TimeSeconds")
+
+[node name="TrackContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -37.0
+offset_right = 37.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="TrackContainer"]
+layout_mode = 2
+text = "Track Value Example"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Container" type="VBoxContainer" parent="TrackContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+
+[node name="Tittle" type="Label" parent="TrackContainer/Container"]
+layout_mode = 2
+text = "Track List"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TrackContainer/Container"]
+layout_mode = 2
+
+[node name="TimeSeconds_label" type="Label" parent="TrackContainer/Container/HBoxContainer"]
+layout_mode = 2
+text = "Time Update"
+
+[node name="TimeSeconds" type="SpinBox" parent="TrackContainer/Container/HBoxContainer"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+min_value = 1.0
+max_value = 60.0
+value = 5.0
+alignment = 1
+suffix = "seconds"
+
+[node name="Values" type="HBoxContainer" parent="TrackContainer/Container"]
+layout_mode = 2
+
+[node name="Value" type="VBoxContainer" parent="TrackContainer/Container/Values"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Time" type="VBoxContainer" parent="TrackContainer/Container/Values"]
+layout_mode = 2
+size_flags_horizontal = 3
