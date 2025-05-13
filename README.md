@@ -33,6 +33,9 @@ _Use case image_ [↑](#Example)
 - **StringStream** _String Values_
 - **VariantStream** _General purposes values_
 
+## Others
+- **TrackValue** _It is used to monitor the list of changes similar to TrackerStream Scene._
+
 ### Example
 ```gd
 # my_logic_file.gd
