@@ -1,5 +1,5 @@
 extends Node
-#region GUI
+#region _GUI_EXAMPLE_
 @export var _gui_value : Control
 @export var _gui_time : Control
 @export var _gui_time_seconds_update : SpinBox
@@ -9,6 +9,7 @@ var _time_update : float = 0.0
 var _current_delta_time : float = 0.0
 #endregion
 
+# Own Tracked Object
 var tracked : TrackValue = TrackValue.new()
 
 func _input(event: InputEvent) -> void:
@@ -16,10 +17,16 @@ func _input(event: InputEvent) -> void:
 		#Get last value
 		print("Last tracked value {0}".format([tracked.get_last_tracked_value()]))
 	elif event.is_action_pressed(&"ui_down"):
-		#Get last value
+		#Get track list
 		print("Tracked list\n{0}".format([str(tracked.get_track())]))
 
 func _ready() -> void:
+	#region _TRACK_SIGNASL_
+	tracked.updated.connect(_on_update)
+	tracked.last_value_error.connect(_on_value_modified)
+	#endregion
+	
+	# Just Used for the example scene.
 	var values : int = tracked.MAX_TRACK_VALUES
 	
 	for x : int in range(0, values, 1):
@@ -30,11 +37,10 @@ func _ready() -> void:
 	
 	_time_update = maxf(_gui_time_seconds_update.value, 1.0)
 	_current_delta_time = _time_update
-		
-	tracked.updated.connect(_on_update)
-	tracked.last_value_error.connect(_on_value_modified)
+	
 	_gui_time_seconds_update.value_changed.connect(_on_change_time)
 	
+#region _EXAMPLE_SCENE_FUNCTIONS_
 func _on_change_time(time : float) -> void:
 	_time_update = maxf(time, 1.0)
 	
@@ -89,4 +95,4 @@ func _update_gui() -> void:
 	for x : int in range(0, _gui_time.get_child_count(), 1):
 		var text : Label = _gui_time.get_child(x)
 		text.text = str(tracked.value)
-	
+#endregion
