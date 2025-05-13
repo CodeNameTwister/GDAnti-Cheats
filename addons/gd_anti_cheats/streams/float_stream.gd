@@ -5,7 +5,7 @@ class_name FloatStream extends StreamValue
 #	https://github.com/CodeNameTwister/GDAnti-Cheats
 #	author:	"Twister"
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-var value : int:
+var value : float:
 	set(e):
 		set_stream(e)
 	get:
