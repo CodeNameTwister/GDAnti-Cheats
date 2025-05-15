@@ -2,10 +2,11 @@ extends Node
 
 var my_grant_value_string : TrackerStream = TrackerStream.new()
 
+# Buffer Track
 var track : Array = []
 
-## On update callback for save track!
-func _on_update_int(last_value : Variant, new_value : Variant) -> void:
+## Success Update callback
+func _on_update_string(last_value : Variant, new_value : Variant) -> void:
 	# Get last tracked value
 	if track.size() > 0:
 		if track[track.size() - 1] != last_value:
@@ -29,12 +30,12 @@ func _ready() -> void:
 	print(" ==== STRING EXAMPLE ===== ")
 
 	#CONNECT
-	my_grant_value_string.updated.connect(_on_update_int)
+	my_grant_value_string.updated.connect(_on_update_string)
 	my_grant_value_string.error.connect(_on_error)
 
 	#INTIIALZIE
 	print("Before initialize: is string ", my_grant_value_string.get_type() == TYPE_STRING)
-	my_grant_value_string.value = "Any thing" #First time defined this tracker as integer
+	my_grant_value_string.value = "Any thing" #First time defined this tracker as String
 	print("After initialize: is string ", my_grant_value_string.get_type() == TYPE_STRING)
 
 	my_grant_value_string.value = 1.4 # Trigger error by another type by default
