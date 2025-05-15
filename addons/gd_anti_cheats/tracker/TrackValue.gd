@@ -75,7 +75,7 @@ func get_sorter_track() -> Array[Variant]:
 		
 	return out
 	
-##Get Current Track With Time Unix Parsed.
+## Get Current Track With Time Unix Parsed.
 func get_log_track_time_parsed() -> Array[Variant]:
 	var track : Array[Array]
 	var total : int = 0
@@ -98,7 +98,7 @@ func get_log_track_time_parsed() -> Array[Variant]:
 		
 	return track
 	
-##Get Current Track With Unix Time.
+## Get Current Track With Unix Time.
 func get_log_track() -> Array[Variant]:
 	var track : Array[Array]
 	var total : int = 0
