@@ -1,10 +1,42 @@
 class_name TrackValue extends RefCounted
+
+## Max Buffer Track Capacity.
 var max_track_value : int = 10:
 	set(max_value):
 		max_track_value = maxi(max_value, 0)
-		if _buffer_track.size() > 0:
+		
+		if _buffer_track.size() > 0 and max_track_value != _buffer_track.size():
+			if max_track_value < 1:
+				_index_track = 0
+				_buffer_track.resize(max_track_value)
+				_time_track.resize(max_track_value)
+				return
+				
+			var index : int = 0
+			var new_buffer : Array[Array] = get_log_track()
+			
 			_buffer_track.resize(max_track_value)
 			_time_track.resize(max_track_value)
+		
+			_buffer_track.fill(null)
+			_time_track.fill(0.0)
+			
+			if max_track_value >= new_buffer.size():
+				_index_track = new_buffer.size()
+				for x : int in range(_index_track):
+					var data : Array = new_buffer[x]
+					_buffer_track[x] = data[0]
+					_time_track[x] = data[1]
+				_index_track = wrapi(_index_track + 1, 0, _buffer_track.size())
+			else:
+				_index_track = _buffer_track.size()
+				var current : int = new_buffer.size() - 1
+				for x : int in range(_index_track - 1, -1, -1):
+					var data : Array = new_buffer[current]
+					_buffer_track[x] = data[0]
+					_time_track[x] = data[1]
+					current -= 1
+				_index_track = wrapi(_index_track + 1, 0, _buffer_track.size())
 		
 
 ## Emitted when value _buffer_track is updated.
@@ -76,7 +108,7 @@ func get_sorter_track() -> Array[Variant]:
 	return out
 	
 ## Get Current Track With Time Unix Parsed.
-func get_log_track_time_parsed() -> Array[Variant]:
+func get_log_track_time_parsed() -> Array[Array]:
 	var track : Array[Array]
 	var total : int = 0
 	track.resize(_buffer_track.size())
@@ -99,7 +131,7 @@ func get_log_track_time_parsed() -> Array[Variant]:
 	return track
 	
 ## Get Current Track With Unix Time.
-func get_log_track() -> Array[Variant]:
+func get_log_track() -> Array[Array]:
 	var track : Array[Array]
 	var total : int = 0
 	
