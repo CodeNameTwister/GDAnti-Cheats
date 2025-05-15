@@ -2,10 +2,8 @@ extends Node
 
 var my_grant_value_int : TrackerStream = TrackerStream.new()
 
-# Buffer Track
 var track : Array = []
 
-## Success Update callback
 func _on_update_int(last_value : Variant, new_value : Variant) -> void:
 	# Get last tracked value
 	if track.size() > 0:
@@ -23,7 +21,6 @@ func _on_update_int(last_value : Variant, new_value : Variant) -> void:
 	print("OK > Update with new value: Last value {0}, New Value {1}".format([last_value, new_value]))
 
 
-## On validations fail! see: TrackStream._is_valid
 func _on_error(last_value : Variant, new_value : Variant) -> void:
 	print("X > On error trying update, values: Last value {0}, New Value {1}".format([last_value, new_value]))
 

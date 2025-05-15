@@ -18,7 +18,16 @@ func _input(event: InputEvent) -> void:
 		print("Last tracked value {0}".format([tracked.get_last_tracked_value()]))
 	elif event.is_action_pressed(&"ui_down"):
 		#Get track list
-		print("Tracked list\n{0}".format([str(tracked.get_track())]))
+		print("Full Tracked list in the buffer\n{0}".format([str(tracked.get_track())]))
+	elif event.is_action_pressed(&"ui_left"):
+		#Get track list
+		print("Log Track\n{0}".format([str(tracked.get_log_track())]))
+	elif event.is_action_pressed(&"ui_right"):
+		#Get track list
+		print("Sorter Tracked\n{0}".format([str(tracked.get_sorter_track())]))
+	elif event.is_action_pressed(&"ui_select"):
+		#Get track list
+		print("Sorter Tracked\n{0}".format([str(tracked.get_log_track_time_parsed() )]))
 
 func _ready() -> void:
 	#region _TRACK_SIGNASL_
@@ -27,7 +36,7 @@ func _ready() -> void:
 	#endregion
 	
 	# Just Used for the example scene.
-	var values : int = tracked.MAX_TRACK_VALUES
+	var values : int = tracked.max_track_value
 	
 	for x : int in range(0, values, 1):
 		var value_label : Label = Label.new()
@@ -67,7 +76,7 @@ func _on_update(_last_value : Variant, new_value : Variant) -> void:
 	_index += 1
 	
 func _get_time() -> String:
-	var time : Dictionary = Time.get_datetime_dict_from_system()
+	var time : Dictionary = Time.get_datetime_dict_from_unix_time(Time.get_unix_time_from_system())
 	for x : String in ["hour", "minute", "second"]:
 		var val : int = 0
 		var variant : Variant = time[x]

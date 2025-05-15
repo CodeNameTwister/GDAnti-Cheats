@@ -32,7 +32,9 @@ grow_vertical = 2
 
 [node name="Label" type="Label" parent="TrackContainer"]
 layout_mode = 2
-text = "Track Value Example"
+text = "Track Value Example
+
+[Space_Bar] For Print in console."
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -43,7 +45,8 @@ size_flags_vertical = 6
 
 [node name="Tittle" type="Label" parent="TrackContainer/Container"]
 layout_mode = 2
-text = "Track List"
+text = "Track List
+(Unix Time is used)"
 horizontal_alignment = 1
 vertical_alignment = 1
 
