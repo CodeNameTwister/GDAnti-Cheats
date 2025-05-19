@@ -26,8 +26,19 @@ func _input(event: InputEvent) -> void:
 		#Get track list
 		print("Sorter Tracked\n{0}".format([str(tracked.get_sorter_track())]))
 	elif event.is_action_pressed(&"ui_select"):
+		#Get sorter track list
+		print("Log track time\n{0}".format([str(tracked.get_log_track_time_parsed() )]))
+	elif event.is_action_pressed(&"ui_page_up"):
 		#Get track list
-		print("Sorter Tracked\n{0}".format([str(tracked.get_log_track_time_parsed() )]))
+		var new_tracked : TrackValue = tracked.create_copy(true)
+		tracked.call_deferred(&"free")
+		tracked = new_tracked
+		
+		print("New copy of tracked created!")
+	elif event.is_action_pressed(&"ui_page_down"):
+		#Get track list
+		tracked.clear()
+		print("Flush buffer track, you can check with ui_select button!")
 
 func _ready() -> void:
 	#region _TRACK_SIGNASL_
