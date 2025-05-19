@@ -98,7 +98,7 @@ This object is designed for monitoring, this technique involves progressively re
 
 The tracking method or value to be monitored varies depending on the needs of you project. (See the Trackvalue scene in example folder)
 
-There is also a programmable function to create a copy at a new memory location.
+There is also have function for create a copy at a new memory location.
 
 ## Roadmap [↑](#table-of-contents)
 - ~~TrackerStream~~
