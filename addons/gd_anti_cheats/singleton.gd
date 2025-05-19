@@ -1,5 +1,5 @@
 #GDAntiCheats
-@icon("icon.png")
+#@icon("icon.png")
 extends Node
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #	GDAnti-Cheats

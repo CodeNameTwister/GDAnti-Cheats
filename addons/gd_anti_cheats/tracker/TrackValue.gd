@@ -53,8 +53,8 @@ var value : Variant:
 	set(new_value):
 		_track_stream.value = new_value
 	get:
-		if _buffer_track.size() > 0 and _buffer_track[_buffer_track.size() - 1] != _track_stream.value:
-			last_value_error.emit(_buffer_track[_buffer_track.size() - 1], _track_stream.value)
+		if _buffer_track.size() > 0 and _buffer_track[wrapi(_index_track - 1, 0, _buffer_track.size())] != _track_stream.value:
+			last_value_error.emit(_buffer_track[wrapi(_index_track - 1, 0, _buffer_track.size())], _track_stream.value)
 		return _track_stream.value
 
 var _index_track : int = 0
@@ -70,6 +70,42 @@ var _time_track : PackedFloat64Array = []:
 var _track_stream : TrackerStream = TrackerStream.new():
 	set(__):
 		return
+		
+## Create a new copy of the track with a new address in memory.
+func create_copy(with_signals : bool) -> TrackValue:
+	var new_track : TrackValue = TrackValue.new()
+	new_track.max_track_value = max_track_value
+	new_track.value = value
+	
+	for x : Array in [
+		[_buffer_track, new_track._buffer_track],
+		[_time_track, new_track._time_track]
+	]:
+		var left_host : Variant = x[0]
+		var right_target : Variant = x[1]
+		
+		if left_host.size() != right_target.size():
+			right_target.resize(left_host.size())
+		
+		for y : int in range(0, left_host.size(), 1):
+			right_target[y] = left_host[y]
+			
+	new_track._index_track = _index_track	
+	
+	if with_signals:
+		for cons : Array in [[updated, new_track.updated], [error, new_track.error], [last_value_error, new_track.last_value_error]]:
+			for callables : Dictionary in cons[0].get_connections():
+				var callable : Callable = callables.callable
+				if callable.is_valid():
+					cons[1].connect(callable, callables.flags)
+					
+	return new_track
+	
+## Clear the buffer track.
+func clear() -> void:
+	_index_track = 0
+	_time_track.clear()
+	_buffer_track.clear()
 
 ## Get Full Track Buffer List.
 func get_track() -> Array[Variant]:
