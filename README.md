@@ -93,6 +93,13 @@ func _ready() -> void:
 	GDAntiCheats.BUFFER_SIZE = 200 #(default 10)
 ```
 
+### TrackValue
+This object is designed for monitoring, this technique involves progressively reviewing any abnormal values ​​you wish to verify, such as adding an amount of health that no element in the universe allows or a position change by a disproportionate distance.
+
+The tracking method or value to be monitored varies depending on the needs of you project. (See the Trackvalue scene in example folder)
+
+There is also a programmable function to create a copy at a new memory location.
+
 ## Roadmap [↑](#table-of-contents)
 - ~~TrackerStream~~
 
