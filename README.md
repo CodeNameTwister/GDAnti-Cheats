@@ -35,6 +35,7 @@ _Use case image_ [↑](#Example)
 
 ## Others
 - **TrackValue** _Can be used to monitor the list of changes similar to TrackerStream Scene._
+- **TrackNet** _Helper class for check connection to complement the review of interceptions._
 
 ### Example
 ```gd

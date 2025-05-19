@@ -1,4 +1,10 @@
 class_name TrackValue extends RefCounted
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+#	GDAnti-Cheats
+#
+#	https://github.com/CodeNameTwister/GDAnti-Cheats
+#	author:	"Twister"
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 ## Max Buffer Track Capacity.
 var max_track_value : int = 10:
